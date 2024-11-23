@@ -890,12 +890,12 @@ left: 400px;
 .userDetails td {
   text-align: left;
   padding: 15px;
-  border-bottom: 1px solid #333; /* Subtle divider */
+  border-bottom: 1px solid #333; 
   font-size: 1rem;
 }
 
 .userDetails th {
-  background-color: #151517; /* Slightly lighter header */
+  background-color: #151517; 
   color: #ffffff;
   font-weight: bold;
   text-transform: uppercase;
@@ -903,7 +903,7 @@ left: 400px;
 }
 
 .userDetails tbody {
-  background-color: #000000; /* Alternating row color */
+  background-color: #000000; 
 }
 
 .userDetails tr td:first-child {

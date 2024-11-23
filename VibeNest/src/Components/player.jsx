@@ -12,7 +12,7 @@ function Player({isSearchFocused}) {
     useEffect(() => {
         const handleKeyPress = (event) => {
             if (event.code === "Space"&& !isSearchFocused)  {
-                event.preventDefault(); // Prevent default spacebar scrolling behavior
+                event.preventDefault();
                 togglePlayPause();
             }
         };

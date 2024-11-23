@@ -4,10 +4,9 @@ function AddTo({ songId, onCancel }) {
   const [isLiked, setIsLiked] = useState(false);
   const [playlists, setPlaylists] = useState([]);
   const [isInPlaylist, setIsInPlaylist] = useState({});
-  const [refreshKey, setRefreshKey] = useState(0); // Used to trigger re-fetch
+  const [refreshKey, setRefreshKey] = useState(0); 
   const userId = localStorage.getItem('user_id');
 
-  // Fetch liked songs
   useEffect(() => {
     const fetchLikedSongs = async () => {
       if (!userId) return;
@@ -24,7 +23,6 @@ function AddTo({ songId, onCancel }) {
     fetchLikedSongs();
   }, [userId, songId]);
 
-  // Fetch user playlists and their state
   useEffect(() => {
     const fetchPlaylists = async () => {
       if (!userId) return;
@@ -42,16 +40,15 @@ function AddTo({ songId, onCancel }) {
           })
         );
 
-        setIsInPlaylist(playlistStates); // Update all playlist states at once
+        setIsInPlaylist(playlistStates); 
       } catch (error) {
         console.error('Error fetching playlists:', error);
       }
     };
 
     fetchPlaylists();
-  }, [userId, songId, refreshKey]); // Re-run when refreshKey changes
+  }, [userId, songId, refreshKey]); 
 
-  // Handle like/unlike toggle
   const handleLikeToggle = async () => {
     if (!userId) return;
 
@@ -70,7 +67,7 @@ function AddTo({ songId, onCancel }) {
 
       const data = await response.json();
       if (data.success) {
-        setIsLiked(!isLiked); // Toggle liked state
+        setIsLiked(!isLiked); 
       } else {
         console.error('Failed to update liked status');
       }
@@ -79,7 +76,6 @@ function AddTo({ songId, onCancel }) {
     }
   };
 
-  // Handle adding/removing song from playlist
   const handlePlaylistToggle = async (playlistId) => {
     if (!userId || !playlistId || !songId) return;
 
@@ -87,8 +83,8 @@ function AddTo({ songId, onCancel }) {
 
     try {
       const url = isCurrentlyInPlaylist
-        ? `http://localhost:3000/playlist_songs/remove` // API to remove song from playlist
-        : `http://localhost:3000/playlist_songs/add`;  // API to add song to playlist
+        ? `http://localhost:3000/playlist_songs/remove` 
+        : `http://localhost:3000/playlist_songs/add`;  
 
       const response = await fetch(url, {
         method: 'POST',
@@ -100,7 +96,6 @@ function AddTo({ songId, onCancel }) {
 
       const data = await response.json();
       if (data.success) {
-        // Trigger a re-fetch by updating refreshKey
         setRefreshKey((prev) => prev + 1);
       }
     } catch (error) {

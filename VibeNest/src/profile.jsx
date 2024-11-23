@@ -4,7 +4,7 @@ import Edit from "./Components/Edit";
 function Profile({ onBack,setIsSearchFocused }) {
   const [username, setUsername] = useState('');
   const [displayName, setDisplayName] = useState('');
-  const [isEditing, setIsEditing] = useState(false); // State to control Edit component visibility
+  const [isEditing, setIsEditing] = useState(false);
   const user_id = localStorage.getItem('user_id');
   const [playlists, setPlaylists] = useState([]);
   const toggleTrue = () => setIsSearchFocused(true);
@@ -44,11 +44,10 @@ function Profile({ onBack,setIsSearchFocused }) {
 
   const handleEditClick = () => {
     toggleTrue();
-    setIsEditing(true); // Show the Edit component
+    setIsEditing(true); 
   };
 
   const handleSave =async (newDisplayName) => {
-    // Update display name logic
     setDisplayName(newDisplayName);
     try {
         const response = await fetch(`http://localhost:3000/dispname/${user_id}`, {
@@ -68,12 +67,12 @@ function Profile({ onBack,setIsSearchFocused }) {
         console.error("Failed to update display name in the database", error);
       }
     toggleFalse();
-    setIsEditing(false); // Hide Edit component after saving
+    setIsEditing(false); 
   };
 
   const handleCancel = () => {
     toggleFalse();
-    setIsEditing(false); // Hide Edit component without saving
+    setIsEditing(false); 
   };
     return (
         <div className=" main">

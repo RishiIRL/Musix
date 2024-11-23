@@ -1,4 +1,4 @@
-// Existing imports remain the same
+
 import './index.css';
 import { useState, useEffect } from "react";
 import AddTo from './Components/AddToPlaylist.jsx';
@@ -20,9 +20,8 @@ function Library({ refresh, triggerLibraryRefresh}) {
 
     const handleBackToLibrary = () => {
         setSelectedPlaylist(null);
-        triggerLibraryRefresh();  // Reset the playlist selection
+        triggerLibraryRefresh();  
     };
-    // Get user_id from localStorage
     const userId = localStorage.getItem('user_id');
 
     const handleAddToClick = (songId) => {
@@ -36,8 +35,6 @@ function Library({ refresh, triggerLibraryRefresh}) {
         setSelectedSongId(null);
     };
 
-   // Fetch liked songs and playlists
-// Updated fetchLikedSongs function in Library component
 useEffect(() => {
     const fetchLikedSongs = async () => {
         const response = await fetch(`http://localhost:3000/alllikedSongs/${userId}`);
@@ -54,7 +51,6 @@ useEffect(() => {
     fetchLikedSongs();
     fetchPlaylists();
 }, [refresh]);
-// Add userId as a dependency to run when it changes
 
     const displayLikedSongs = showAllLikedSongs ? likedSongs : likedSongs.slice(0, 8);
     const createNewPlaylist = async () => {
@@ -93,7 +89,7 @@ useEffect(() => {
 
 
 if (selectedPlaylist) {
-    return <Playlist playlist={selectedPlaylist} onBack={handleBackToLibrary} />; // Show the Playlist component when a playlist is selected
+    return <Playlist playlist={selectedPlaylist} onBack={handleBackToLibrary} />;
 }
     return (
         <div className='mainlibrary'>
@@ -133,7 +129,6 @@ if (selectedPlaylist) {
                     </div>
                 ))}
 
-                {/* Button to trigger playlist creation */}
                 <div className="cover coverall" onClick={createNewPlaylist}>
                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>

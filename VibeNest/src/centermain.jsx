@@ -18,7 +18,7 @@ function MainCtr({ activePage }) {
     };
 
     const triggerLibraryRefresh = () => {
-        setRefreshLibrary((prev) => !prev); // Toggle to force re-render
+        setRefreshLibrary((prev) => !prev); 
     };
 
     return (

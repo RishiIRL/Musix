@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 function Edit({ displayName, onSave, onCancel }) {
-  const [newDisplayName, setNewDisplayName] = useState(displayName || ""); // Set default to empty string if undefined
+  const [newDisplayName, setNewDisplayName] = useState(displayName || "");
 
   const handleInputChange = (event) => {
     setNewDisplayName(event.target.value);
@@ -16,7 +16,7 @@ function Edit({ displayName, onSave, onCancel }) {
       <input
         type="text"
         placeholder="Enter a new name"
-        value={newDisplayName} // Controlled input
+        value={newDisplayName} 
         onChange={handleInputChange}
       />
       <svg

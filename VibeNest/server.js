@@ -9,7 +9,6 @@ const port = 3000;
 app.use(cors());
 app.use(bodyParser.json());
 
-// Login Route
 app.post('/login', (req, res) => {
   const { username, pass } = req.body;
 
@@ -31,7 +30,6 @@ app.post('/login', (req, res) => {
   });
 });
 
-// Signup Route
 app.post('/signup', (req, res) => {
   const { username, pass } = req.body;
 
@@ -53,7 +51,6 @@ app.post('/signup', (req, res) => {
   });
 });
 
-// Get Songs Route
 app.get('/songs', (req, res) => {
   const { genre, keyword, album_id } = req.query;
   let query = `
@@ -88,7 +85,6 @@ app.get('/songs', (req, res) => {
   });
 });
 
-// Get Albums Route
 app.get('/albums', (req, res) => {
   db.query(`
     SELECT albums.album_id, albums.album_name, albums.album_img, artist.artist_name 
@@ -102,7 +98,6 @@ app.get('/albums', (req, res) => {
   });
 });
 
-// Get User by ID Route
 app.get('/users/:userId', (req, res) => {
   const { userId } = req.params;
 
@@ -119,7 +114,6 @@ app.get('/users/:userId', (req, res) => {
   });
 });
 
-// Update Display Name Route
 app.put('/dispname/:userId', (req, res) => {
   const { userId } = req.params;
   const { display_name } = req.body;
@@ -132,7 +126,6 @@ app.put('/dispname/:userId', (req, res) => {
   });
 });
 
-// Liked Songs Route
 app.get('/liked_songs/:userId', (req, res) => {
   const { userId } = req.params;
 
@@ -144,7 +137,6 @@ app.get('/liked_songs/:userId', (req, res) => {
   });
 });
 
-// Add Song to Liked Songs
 app.post('/liked_songs/add', (req, res) => {
   const { user_id, song_id } = req.body;
   db.query('INSERT INTO liked_songs (user_id, song_id) VALUES (?, ?)', [user_id, song_id], (err) => {
@@ -155,7 +147,6 @@ app.post('/liked_songs/add', (req, res) => {
   });
 });
 
-// Remove Song from Liked Songs
 app.post('/liked_songs/remove', (req, res) => {
   const { user_id, song_id } = req.body;
   db.query('DELETE FROM liked_songs WHERE user_id = ? AND song_id = ?', [user_id, song_id], (err) => {
@@ -166,7 +157,6 @@ app.post('/liked_songs/remove', (req, res) => {
   });
 });
 
-// Get Playlists for a User
 app.get('/playlists/:userId', (req, res) => {
   const { userId } = req.params;
 
@@ -185,7 +175,6 @@ app.get('/playlist_songs/:playlist_id', (req, res) => {
     return res.status(400).json({ error: 'Missing playlist_id' });
   }
 
-  // Query to get all songs for a specific playlist
   const query = `
     SELECT s.song_id, s.song_name
     FROM playlist_songs ps
@@ -199,13 +188,11 @@ app.get('/playlist_songs/:playlist_id', (req, res) => {
       return res.status(500).json({ error: 'Internal server error' });
     }
 
-    // Return the songs for the given playlist
     return res.json(songs);
   });
 });
 
 
-// Add Song to Playlist
 app.post('/playlist_songs/add', (req, res) => {
   const { playlist_id, song_id } = req.body;
 
@@ -214,12 +201,10 @@ app.post('/playlist_songs/add', (req, res) => {
       return res.status(500).json({ error: 'Error adding song to playlist' });
     }
 
-    // Update Playlist cover after adding a song
     updatePlaylistCover(playlist_id, res);
   });
 });
 
-// Remove Song from Playlist
 app.post('/playlist_songs/remove', (req, res) => {
   const { playlist_id, song_id } = req.body;
 
@@ -228,12 +213,10 @@ app.post('/playlist_songs/remove', (req, res) => {
       return res.status(500).json({ error: 'Error removing song from playlist' });
     }
 
-    // Update Playlist cover after removing a song
     updatePlaylistCover(playlist_id, res);
   });
 });
 
-// Helper function to update the playlist cover
 function updatePlaylistCover(playlist_id, res) {
   db.query('SELECT song_id FROM playlist_songs WHERE playlist_id = ?', [playlist_id], (err, results) => {
     if (err) {
@@ -264,8 +247,6 @@ function updatePlaylistCover(playlist_id, res) {
   });
 }
 
-// Route to get liked songs for a specific user
-// In your backend code
 app.get('/alllikedSongs/:userId', (req, res) => {
   const { userId } = req.params;
 
@@ -279,10 +260,8 @@ app.get('/alllikedSongs/:userId', (req, res) => {
 });
 
 
-
-// Assuming the table 'playlist_songs' links 'playlists' and 'songs' by 'playlist_id' and 'song_id'
 app.get('/playlistSongs', (req, res) => {
-  const playlistId = req.query.playlist_id;  // Get playlist_id from the query parameters
+  const playlistId = req.query.playlist_id; 
 
   const query = `
       SELECT s.song_id, s.song_name, s.image_path, s.artist, s.album
@@ -298,10 +277,9 @@ app.get('/playlistSongs', (req, res) => {
       return;
     }
 
-    res.json(results);  // Send the list of songs in the playlist as a JSON response
+    res.json(results);  
   });
 });
-// Create Playlist Route
 app.post('/addPlaylist', (req, res) => {
   const { playlist_name, user_id,playlist_cover } = req.body;
 
@@ -309,7 +287,6 @@ app.post('/addPlaylist', (req, res) => {
     return res.status(400).json({ message: 'Playlist name and user ID are required' });
   }
 
-  // Query to insert new playlist into the database
   const query = 'INSERT INTO playlists (playlist_name, user_id,playlist_cover) VALUES (?, ?, ?)';
 
   db.query(query, [playlist_name, user_id, playlist_cover], (err, result) => {
@@ -328,7 +305,6 @@ app.get('/allplaylistsongs', (req, res) => {
     return res.status(400).json({ error: 'Playlist ID is required' });
   }
 
-  // Query to get the songs in the given playlist
   const songsQuery = `
     SELECT s.song_id, s.song_name, s.image_path, a.artist_name, s.song_path
     FROM playlist_songs ps
@@ -342,7 +318,6 @@ app.get('/allplaylistsongs', (req, res) => {
       return res.status(500).json({ error: 'Error fetching songs for playlist' });
     }
 
-    // Return the songs for the playlist
     res.json(songResults);
   });
 });

@@ -5,7 +5,7 @@ import Confirm from "./Components/Confirm.jsx";
 function Playlist({ playlist, onBack }) {
   const { playSong } = usePlayer();
   const [songs, setSongs] = useState([]);
-  const [showConfirm, setShowConfirm] = useState(false);  // State to control the visibility of the Confirm component
+  const [showConfirm, setShowConfirm] = useState(false);  
   const { playlist_name, playlist_cover, playlist_id } = playlist;
 
   useEffect(() => {
@@ -21,17 +21,14 @@ function Playlist({ playlist, onBack }) {
   }, [playlist_id]);
 
   const onDeletePlaylist = async () => {
-    // Step 1: Delete the songs from the playlist_songs table
     await fetch(`http://localhost:3000/deletesongsfromplaylist?playlist_id=${playlist_id}`, {
       method: 'DELETE',
     });
 
-    // Step 2: Delete the playlist from the playlists table
     await fetch(`http://localhost:3000/deleteplaylist?playlist_id=${playlist_id}`, {
       method: 'DELETE',
     });
 
-    // Optionally, call onBack() to navigate back after deletion
     onBack();
   };
 
@@ -106,8 +103,8 @@ function Playlist({ playlist, onBack }) {
       </div>
       {showConfirm && (
         <Confirm
-          onCancel={() => setShowConfirm(false)}  // Close the confirmation popup if the user clicks 'No'
-          onConfirm={onDeletePlaylist}  // Call the deletion logic if the user clicks 'Yes'
+          onCancel={() => setShowConfirm(false)}  
+          onConfirm={onDeletePlaylist}  
         />
       )}
     </div>
