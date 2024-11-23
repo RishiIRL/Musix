@@ -1,5 +1,5 @@
 This database should be filled with your data to get it working and songs should be added in the public folder and a relative path from  public is inserted in the database to make them work. Same for images too.
-Order:
+Order for filling tables as per foreign key constraints:
 1. Fill artist table
 2. Fill albums table
 3. Fill song table
