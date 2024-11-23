@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+.wrapper * {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+::selection {
+  background: #fa0362a8;
+  color: white;
+}
+
+.wrapper {
+    margin-top: 120px;
+    margin-left: 540px;
+  overflow: hidden;
+  /* max-width: 390px; */
+  width: 390px;
+  background: rgb(28, 28, 28);
+  padding: 30px;
+  border-radius: 5px;
+  box-shadow: 0px 15px 20px rgba(0,0,0,0.1);
+}
+
+.wrapper .title-text {
+  display: flex;
+  width: 200%;
+}
+
+.logintitle,
+.logintitle span {
+  width: 3%;
+  font-family: "Playwrite GB S", cursive;
+  font-optical-sizing: auto;
+  font-size: 15px;
+  color: rgb(206, 206, 206);
+}
+
+.wrapper .logintitle {
+  width: 50%;
+  font-size: 35px;
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.6s cubic-bezier(0.68,-0.55,0.265,1.55);
+}
+
+.wrapper .slide-controls {
+  position: relative;
+  display: flex;
+  height: 50px;
+  width: 388px;
+  overflow: hidden;
+  margin: 30px 0 10px 0;
+  justify-content: space-between;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.slide-controls .slide {
+  height: 100%;
+  width: 100%;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 48px;
+  cursor: pointer;
+  z-index: 1;
+  transition: all 0.6s ease;
+}
+
+
+.slide-controls label.signup {
+  color: #000;
+}
+
+.slide-controls .slider-tab {
+  position: absolute;
+  height: 100%;
+  width: 50%;
+  left: 0;
+  z-index: 0;
+  border-radius: 5px;
+  background: #fa0362a8;
+  transition: all 0.6s cubic-bezier(0.68,-0.55,0.265,1.55);
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+#signup:checked ~ .slider-tab {
+  left: 50%;
+}
+
+#signup:checked ~ label.signup {
+  color: #fff;
+  cursor: default;
+  user-select: none;
+}
+
+#signup:checked ~ label.login {
+  color: white;
+}
+
+#login:checked ~ label.signup {
+  color: white;
+}
+
+#login:checked ~ label.login {
+  cursor: default;
+  user-select: none;
+}
+
+.wrapper .form-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.form-container .form-inner {
+  display: flex;
+  width: 200%;
+}
+.form-container .form-inner form {
+  width: 50%;
+  transition: all 0.6s cubic-bezier(0.68,-0.55,0.265,1.55);
+}
+
+.form-inner form .field {
+  height: 50px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.form-inner form .field input {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  padding-left: 0;
+  border-radius: 5px;
+  border: 1px solid lightgrey;
+  border-bottom-width: 2px;
+  font-size: 17px;
+  transition: all 0.3s ease;
+}
+
+.form-inner form .field input:focus {
+  border-color: #fa0362a8;
+}
+
+.form-inner form .field input::placeholder {
+  color: #999;
+  transition: all 0.3s ease;
+}
+
+form .field input:focus::placeholder {
+  color: #b3b3b3;
+}
+
+.form-inner form .pass-link {
+  margin-top: 5px;
+}
+
+.form-inner form .signup-link {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.form-inner form .pass-link a,
+.form-inner form .signup-link a {
+  color: #fa0362a8;
+  text-decoration: none;
+}
+
+.form-inner form .pass-link a:hover,
+.form-inner form .signup-link a:hover {
+  text-decoration: underline;
+}
+
+form .loginbtn {
+  height: 50px;
+  width: 100%;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+}
+
+form .loginbtn .btn-layer {
+  height: 100%;
+  width: 300%;
+  position: absolute;
+  left: -100%;
+  background: #fa0362a8;
+  border-radius: 5px;
+  transition: all 0.4s ease;
+}
+
+form .loginbtn:hover .btn-layer {
+  left: 0;
+}
+
+form .loginbtn input[type="submit"] {
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  position: relative;
+  background: none;
+  border: none;
+  color: #fff;
+  padding-left: 0;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.form-inner input:focus{
+    color: black;
+    
+}
+.isadmin{
+  outline: none;
+  position: fixed;
+  border-radius: 5px;
+  padding: 0px 10px;
+  border: none;
+  margin-top: 6%;
+  margin-left: 88%;
+  background-color: rgb(0, 0, 0) ;
+  color: rgb(51, 51, 51);
+  text-decoration: underline;
+}
+.isadmin:hover{
+  color: #fa0362a8;
+  background-color: #151515;
+  cursor: pointer;
+}
+.isnotadmin{
+  outline: none;
+  position: fixed;
+  border-radius: 5px;
+  padding: 0px 10px;
+  border: none;
+  margin-top: 1%;
+  margin-left: 45%;
+  background-color: rgb(0, 0, 0) ;
+  color: rgb(111, 110, 110);
+  text-decoration: underline;
+}
+.isnotadmin:hover{
+  color: #fa0362a8;
+  background-color: #151515;
+  cursor: pointer;
+}
+

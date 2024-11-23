@@ -1,0 +1,34 @@
+function ANavbar() {
+    return (
+        <div id="navbar">
+        <div id="title">
+            <div id="titlesvg"><svg width="35px" height="35px" viewBox="0 0 24 24" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+
+                    <g id="SVGRepo_bgCarrier" strokeWidth="0" />
+
+                    <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" />
+
+                    <g id="SVGRepo_iconCarrier">
+                        <path d="M4 10V13" stroke="#fd0865" strokeWidth="1.7" strokeLinecap="round" />
+                        <path d="M16 10V13" stroke="#fd0865" strokeWidth="1.7" strokeLinecap="round" />
+                        <path d="M7 7L7 16" stroke="#fafafa" strokeWidth="1.7" strokeLinecap="round" />
+                        <path d="M13 7L13 16" stroke="#fd0865" strokeWidth="1.7" strokeLinecap="round" />
+                        <path d="M19 7L19 16" stroke="#fd0865" strokeWidth="1.7" strokeLinecap="round" />
+                        <path d="M10 4L10 19" stroke="#fd0865" strokeWidth="1.7" strokeLinecap="round" />
+                    </g>
+
+                </svg></div>
+
+            <div id="titlename"><span>Vibe</span>Nest</div>
+
+        </div>
+
+
+        <div id="acc">
+            <div id="accname" >ADMIN</div>
+        </div>
+    </div>
+    );
+}
+export default ANavbar
