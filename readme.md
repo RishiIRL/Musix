@@ -36,7 +36,7 @@ To run this project locally, follow these steps:
    ```
 
 2. **Install Backend Dependencies**:
-   Navigate to the backend directory (if separate) and install dependencies:
+   Navigate to this directory and install dependencies:
    ```bash
    cd VibeNest
    npm install
