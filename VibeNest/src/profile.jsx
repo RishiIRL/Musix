@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Edit from "./Edit";
+import Edit from "./Components/Edit";
 
 function Profile({ onBack,setIsSearchFocused }) {
   const [username, setUsername] = useState('');

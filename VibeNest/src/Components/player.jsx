@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { usePlayer } from './PlayerContext';
+import { usePlayer } from '../PlayerContext';
 function Player({isSearchFocused}) {
     const { currentSong, togglePlayPause, isPlaying, setCurrentSong } = usePlayer();
     const audioRef = useRef(new Audio(currentSong.song_path));

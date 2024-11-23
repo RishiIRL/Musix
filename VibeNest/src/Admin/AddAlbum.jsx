@@ -8,14 +8,12 @@ function AddAlb() {
     album_img: "",
   });
 
-  // Fetch artists for the dropdown
   const fetchArtists = async () => {
     const response = await fetch("http://localhost:3000/allartists");
     const data = await response.json();
     setArtists(data);
   };
 
-  // Handle adding a new album
   const handleAddAlbum = async () => {
     const response = await fetch("http://localhost:3000/addalbum", {
       method: "POST",
@@ -25,7 +23,6 @@ function AddAlb() {
 
     if (response.ok) {
       alert("Album added successfully");
-      // Reset the form
       setNewAlbum({
         album_name: "",
         artist_id: "",

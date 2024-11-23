@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { usePlayer } from './PlayerContext.jsx';
-import AddTo from "./AddToPlaylist.jsx";
+import AddTo from "./Components/AddToPlaylist.jsx";
 
 function Songs(){
     const { playSong } = usePlayer();

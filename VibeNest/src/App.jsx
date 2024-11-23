@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from './Navbar.jsx';
-import Sidebar from './Sidebar.jsx';
-import Player from './player.jsx';
-import Search from './Search.jsx';
+import Navbar from './Components/Navbar.jsx';
+import Sidebar from './Components/Sidebar.jsx';
+import Player from './Components/player.jsx';
+import Search from './Components/Search.jsx';
 import MainCtr from './centermain.jsx';
 import Profile from './profile.jsx';
 import { PlayerProvider } from './PlayerContext.jsx';

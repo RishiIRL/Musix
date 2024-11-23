@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { usePlayer } from "./PlayerContext.jsx";
-import Confirm from "./Confirm.jsx";
+import Confirm from "./Components/Confirm.jsx";
 
 function Playlist({ playlist, onBack }) {
   const { playSong } = usePlayer();

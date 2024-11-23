@@ -8,7 +8,7 @@ Musix is a music streaming web application built with React, Node.js, and MySQL.
 - **User Login & Signup**: Allows users to log in and access their playlists and more.
 - **Music Player**: Stream and control playback of songs directly in the app.
 - **Song Library**: Browse and add songs to the library.
-- **Admin Panel**: Admins can log in to manage the app and control music content.
+- **Admin Panel**: Admin can log in to manage the app and control music content.
 
 
 ## Technologies Used
@@ -38,7 +38,7 @@ To run this project locally, follow these steps:
 2. **Install Backend Dependencies**:
    Navigate to the backend directory (if separate) and install dependencies:
    ```bash
-   cd backend
+   cd VibeNest
    npm install
    ```
 
@@ -60,10 +60,11 @@ To run this project locally, follow these steps:
 6. **Start the Application**:
    - Start the backend server:
      ```bash
-     npm start
+     node server.js
      ```
-   - Start the frontend server:
+   - Start the frontend server in a seperate terminal:
      ```bash
+     cd VibeNest
      npm run dev
      ```
 
@@ -84,5 +85,6 @@ To run this project locally, follow these steps:
 
 - `public/`: Contains static assets like images and icons.
 - `src/`: Contains React components and related logic.
+  - `components/`: Reusable components like the music player, sidebar, etc.
 - `db.cjs`: Configuration for connecting to the MySQL database.
 

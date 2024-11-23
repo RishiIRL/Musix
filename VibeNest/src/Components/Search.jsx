@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { usePlayer } from './PlayerContext.jsx';
+import { usePlayer } from '../PlayerContext.jsx';
 import AddTo from "./AddToPlaylist.jsx";
 
 function Search({ setIsSearchFocused }) {
